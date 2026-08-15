@@ -107,5 +107,29 @@ static void crearLibro() {
     }
 
 
+static void listarLibros() {
+        System.out.println("\n--- Lista de Libros ---");
+        if (libros.isEmpty()) {
+            System.out.println("No hay libros registrados.");
+        } else {
+            for (Libro l : libros) {
+                System.out.println(l);
+            }
+        }
+    }
+
+static Libro buscarLibro(String codigo) {
+        for (Libro l : libros) {
+            if (l.getCodigo().equals(codigo)) {
+                return l;
+            }
+        }
+        return null;
+    }
+
+
+
+
+
 }
 
