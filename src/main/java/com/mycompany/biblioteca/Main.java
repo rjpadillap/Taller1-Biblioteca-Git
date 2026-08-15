@@ -11,7 +11,57 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
     
     public static void main(String[] args) {
-        // Aquí irá el menú (Fase 8)
+             int opcion;
+        do {
+            System.out.println("\n===== SISTEMA DE GESTIÓN DE BIBLIOTECA =====");
+            System.out.println("--- Clientes ---");
+            System.out.println("1. Crear cliente");
+            System.out.println("2. Listar clientes");
+            System.out.println("3. Buscar cliente");
+            System.out.println("4. Actualizar cliente");
+            System.out.println("5. Eliminar cliente");
+            System.out.println("--- Libros ---");
+            System.out.println("6. Crear libro");
+            System.out.println("7. Listar libros");
+            System.out.println("8. Buscar libro");
+            System.out.println("9. Actualizar libro");
+            System.out.println("10. Eliminar libro");
+            System.out.println("--- Préstamos ---");
+            System.out.println("11. Registrar préstamo");
+            System.out.println("12. Registrar devolución");
+            System.out.println("13. Listar préstamos activos");
+            System.out.println("0. Salir");
+            System.out.print("Elija una opción: ");
+
+            opcion = Integer.parseInt(sc.nextLine());
+
+            switch (opcion) {
+                case 1: crearCliente(); break;
+                case 2: listarClientes(); break;
+                case 3:
+                    System.out.print("ID del cliente a buscar: ");
+                    Cliente c = buscarCliente(sc.nextLine());
+                    System.out.println(c != null ? c : "Cliente no encontrado.");
+                    break;
+                case 4: actualizarCliente(); break;
+                case 5: eliminarCliente(); break;
+                case 6: crearLibro(); break;
+                case 7: listarLibros(); break;
+                case 8:
+                    System.out.print("Código del libro a buscar: ");
+                    Libro l = buscarLibro(sc.nextLine());
+                    System.out.println(l != null ? l : "Libro no encontrado.");
+                    break;
+                case 9: actualizarLibro(); break;
+                case 10: eliminarLibro(); break;
+                case 11: crearPrestamo(); break;
+                case 12: devolucionPrestamo(); break;
+                case 13: listarPrestamos(); break;
+                case 0: System.out.println("Saliendo del sistema..."); break;
+                default: System.out.println("Opción inválida.");
+            }
+        } while (opcion != 0);
+    
     }
 
 static void crearCliente() {
@@ -154,6 +204,22 @@ static void actualizarLibro() {
         System.out.println("Libro actualizado exitosamente.");
     }
 
+
+
+static void eliminarLibro() {
+        System.out.println("\n--- Eliminar Libro ---");
+        System.out.print("Ingrese el código del libro a eliminar: ");
+        String codigo = sc.nextLine();
+
+        Libro libro = buscarLibro(codigo);
+        if (libro == null) {
+            System.out.println("Libro no encontrado.");
+            return;
+        }
+
+        libros.remove(libro);
+        System.out.println("Libro eliminado exitosamente.");
+    }
 
 
 static void crearPrestamo() {
