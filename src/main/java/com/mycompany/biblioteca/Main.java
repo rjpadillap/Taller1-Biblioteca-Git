@@ -48,5 +48,31 @@ static Cliente buscarCliente(String id) {
     }
 
 
+static void actualizarCliente() {
+        System.out.println("\n--- Actualizar Cliente ---");
+        System.out.print("Ingrese el ID del cliente a actualizar: ");
+        String id = sc.nextLine();
+
+        Cliente cliente = buscarCliente(id);
+        if (cliente == null) {
+            System.out.println("Cliente no encontrado.");
+            return;
+        }
+
+        System.out.print("Nuevo nombre (" + cliente.getNombre() + "): ");
+        String nombre = sc.nextLine();
+        System.out.print("Nuevo teléfono (" + cliente.getTelefono() + "): ");
+        String telefono = sc.nextLine();
+        System.out.print("Nuevo email (" + cliente.getEmail() + "): ");
+        String email = sc.nextLine();
+
+        cliente.setNombre(nombre);
+        cliente.setTelefono(telefono);
+        cliente.setEmail(email);
+
+        System.out.println("Cliente actualizado exitosamente.");
+    }
+
+
 }
 
