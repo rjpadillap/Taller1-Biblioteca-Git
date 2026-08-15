@@ -5,8 +5,9 @@ import java.util.Scanner;
 
 public class Main {
     static ArrayList<Cliente> clientes = new ArrayList<>();
+    static ArrayList<Libro> libros = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
-
+    
     public static void main(String[] args) {
         // Aquí irá el menú (Fase 8)
     }
@@ -88,6 +89,23 @@ static void eliminarCliente() {
         clientes.remove(cliente);
         System.out.println("Cliente eliminado exitosamente.");
     }
+
+static void crearLibro() {
+        System.out.println("\n--- Crear Libro ---");
+        System.out.print("Código: ");
+        String codigo = sc.nextLine();
+        System.out.print("Título: ");
+        String titulo = sc.nextLine();
+        System.out.print("Año de publicación: ");
+        String anioPublicacion = sc.nextLine();
+        System.out.print("Autor: ");
+        String autor = sc.nextLine();
+
+        Libro libro = new Libro(codigo, titulo, anioPublicacion, autor);
+        libros.add(libro);
+        System.out.println("Libro creado exitosamente.");
+    }
+
 
 }
 
