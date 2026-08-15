@@ -219,6 +219,22 @@ static void devolucionPrestamo() {
         System.out.println("Devolución registrada exitosamente.");
     }
 
+static void listarPrestamos() {
+        System.out.println("\n--- Lista de Préstamos Activos ---");
+        boolean hayActivos = false;
+        for (Prestamo p : prestamos) {
+            if (p.getEstado().equals("activo")) {
+                System.out.println(p);
+                hayActivos = true;
+            }
+        }
+        if (!hayActivos) {
+            System.out.println("No hay préstamos activos.");
+        }
+    }
+
+
+
 
 
 
