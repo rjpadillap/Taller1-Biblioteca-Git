@@ -190,5 +190,56 @@ static void crearPrestamo() {
     }
 
 
+static void devolucionPrestamo() {
+        System.out.println("\n--- Registrar Devolución ---");
+        System.out.print("ID del préstamo: ");
+        String idPrestamo = sc.nextLine();
+
+        Prestamo prestamoEncontrado = null;
+        for (Prestamo p : prestamos) {
+            if (p.getIdPrestamo().equals(idPrestamo)) {
+                prestamoEncontrado = p;
+                break;
+            }
+        }
+
+        if (prestamoEncontrado == null) {
+            System.out.println("Préstamo no encontrado.");
+            return;
+        }
+
+        if (prestamoEncontrado.getEstado().equals("devuelto")) {
+            System.out.println("Este préstamo ya fue devuelto.");
+            return;
+        }
+
+        prestamoEncontrado.setEstado("devuelto");
+        prestamoEncontrado.getLibro().setDisponible(true);
+
+        System.out.println("Devolución registrada exitosamente.");
+    }
+
+static void listarPrestamos() {
+        System.out.println("\n--- Lista de Préstamos Activos ---");
+        boolean hayActivos = false;
+        for (Prestamo p : prestamos) {
+            if (p.getEstado().equals("activo")) {
+                System.out.println(p);
+                hayActivos = true;
+            }
+        }
+        if (!hayActivos) {
+            System.out.println("No hay préstamos activos.");
+        }
+    }
+
+
+
+
+
+
+
+
+
 }
 
